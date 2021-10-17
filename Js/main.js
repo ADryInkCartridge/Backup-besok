@@ -9,8 +9,8 @@ const size = {
   h : window.innerHeight * 1 
 }
 
-scene.add(new THREE.DirectionalLight(0xffffbb, 1));
-scene.add(new THREE.AmbientLight(0xffffff, 1));
+
+
 const camera = new THREE.PerspectiveCamera(90, size.w / size.h,0.1,1000);
 camera.position.set(0, 50, 0);
 const pi = Math.PI;
@@ -68,7 +68,17 @@ function gameloop() {
   score = 0
   jumpStartTime = 0
   gameover = 0
-  ball = createBall(0xffffff)
+  floor2 = createFloor2()
+  // floor = createFloor(0x121212)
+  // scene.add(floor)
+
+  // floor.position.set(0, -3, 0)
+  // floor.rotation.x = 270 * (pi/180);
+  light = new THREE.PointLight(0xffffbb, 0.6);
+  light.position.set(0,10,0);
+  scene.add(light);
+  scene.add(new THREE.AmbientLight(0xffffff, 0.3));
+  ball = createBall(0xff0000)
   scene.add(ball)
   animate()
   function animate(){ 
