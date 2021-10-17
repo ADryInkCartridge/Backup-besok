@@ -1,4 +1,3 @@
-const start = document.querySelector("#start")
 const scene = new THREE.Scene()
 
 scene.background = new THREE.Color(0xffffff);
@@ -6,8 +5,8 @@ scene.background = new THREE.Color(0xffffff);
 const canvas = document.querySelector("#bg");
 
 const size = {
-  w : window.innerWidth * 0.8 ,
-  h : window.innerHeight * 0.8 
+  w : window.innerWidth * 1 ,
+  h : window.innerHeight * 1 
 }
 
 scene.add(new THREE.DirectionalLight(0xffffbb, 1));
@@ -40,22 +39,17 @@ const hmax = 8
 var gameover = 0
 var jumpStartTime = 0
 
-start.addEventListener('click',(e)=> {
-  gameloop()
-})
 
 canvas.addEventListener("click", (e) => {
   var key = e.type;
   cLane(key)
 })
+
 function gameloop() {
   const x = document
   x.addEventListener('keydown', res)
   
   function res(e){
-    if (press==0)
-      animate()
-    press++
     var key = e.code;
     cLane(key)
   }
@@ -76,7 +70,7 @@ function gameloop() {
   gameover = 0
   ball = createBall(0xffffff)
   scene.add(ball)
-  
+  animate()
   function animate(){ 
       orbitControls.update();
       ballAnimation()
@@ -85,3 +79,4 @@ function gameloop() {
   }
 }
 
+gameloop()
